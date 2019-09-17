@@ -1,3 +1,7 @@
+'use strict';
+
+var timeArray = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12am: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
+
 var seattle = {
   location: 'Seattle',
   minCust: 23,
@@ -29,14 +33,16 @@ var seattle = {
   },
   //a function to make a list of contents
   render: function () {
-    var body = document.getElementById ('body');
-    var h1Tag = document.createElement('h1');
-    h1Tag.textContent = this.location;
+    this.getHourlyCust();
+    this.getHourlySale();
+    this.getTotalSale();
+    var body = document.getElementById('body');
+    var storeName = document.createElement('h1');
+    storeName.textContent = this.location;
     console.log(this.location);
-    body.appendChild(h1Tag);
+    body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    var timeArray = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12am: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
     for (var i = 0; i < 15; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
@@ -49,9 +55,6 @@ var seattle = {
 
 };
 
-seattle.getHourlyCust();
-seattle.getHourlySale();
-seattle.getTotalSale();
 seattle.render();
 
 
@@ -86,14 +89,16 @@ var tokyo = {
   },
   //a function to make a list of contents
   render: function () {
-    var body = document.getElementById ('body');
-    var h1Tag = document.createElement('h1');
-    h1Tag.textContent = this.location;
+    this.getHourlyCust();
+    this.getHourlySale();
+    this.getTotalSale();
+    var body = document.getElementById('body');
+    var storeName = document.createElement('h1');
+    storeName.textContent = this.location;
     console.log(this.location);
-    body.appendChild(h1Tag);
+    body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    var timeArray = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12am: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
     for (var i = 0; i < 15; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
@@ -106,9 +111,6 @@ var tokyo = {
 
 };
 
-tokyo.getHourlyCust();
-tokyo.getHourlySale();
-tokyo.getTotalSale();
 tokyo.render();
 
 
@@ -143,14 +145,16 @@ var dubai = {
   },
   //a function to make a list of contents
   render: function () {
-    var body = document.getElementById ('body');
-    var h1Tag = document.createElement('h1');
-    h1Tag.textContent = this.location;
+    this.getHourlyCust();
+    this.getHourlySale();
+    this.getTotalSale();
+    var body = document.getElementById('body');
+    var storeName = document.createElement('h1');
+    storeName.textContent = this.location;
     console.log(this.location);
-    body.appendChild(h1Tag);
+    body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    var timeArray = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12am: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
     for (var i = 0; i < 15; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
@@ -163,9 +167,6 @@ var dubai = {
 
 };
 
-dubai.getHourlyCust();
-dubai.getHourlySale();
-dubai.getTotalSale();
 dubai.render();
 
 
@@ -200,14 +201,16 @@ var paris = {
   },
   //a function to make a list of contents
   render: function () {
-    var body = document.getElementById ('body');
-    var h1Tag = document.createElement('h1');
-    h1Tag.textContent = this.location;
+    this.getHourlyCust();
+    this.getHourlySale();
+    this.getTotalSale();
+    var body = document.getElementById('body');
+    var storeName = document.createElement('h1');
+    storeName.textContent = this.location;
     console.log(this.location);
-    body.appendChild(h1Tag);
+    body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    var timeArray = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12am: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
     for (var i = 0; i < 15; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
@@ -220,9 +223,7 @@ var paris = {
 
 };
 
-paris.getHourlyCust();
-paris.getHourlySale();
-paris.getTotalSale();
+
 paris.render();
 
 
@@ -258,14 +259,16 @@ var lima = {
   },
   //a function to make a list of contents
   render: function () {
-    var body = document.getElementById ('body');
-    var h1Tag = document.createElement('h1');
-    h1Tag.textContent = this.location;
+    this.getHourlyCust();
+    this.getHourlySale();
+    this.getTotalSale();
+    var body = document.getElementById('body');
+    var storeName = document.createElement('h1');
+    storeName.textContent = this.location;
     console.log(this.location);
-    body.appendChild(h1Tag);
+    body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    var timeArray = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12am: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
     for (var i = 0; i < 15; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
@@ -278,7 +281,4 @@ var lima = {
 
 };
 
-lima.getHourlyCust();
-lima.getHourlySale();
-lima.getTotalSale();
 lima.render();
