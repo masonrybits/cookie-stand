@@ -11,14 +11,14 @@ var seattle = {
   hourlySale: [],
   //a function to get an array of hourly customers rounded down
   getHourlyCust: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
     return this.hourlyCust;
   },
   //a function to get an array of hourly sales rounded down
   getHourlySale: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
     }
     return this.hourlySale;
@@ -26,7 +26,7 @@ var seattle = {
   //a function to get a total sale
   getTotalSale: function () {
     var total = 0;
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       total += this.hourlySale[i];
     }
     return total;
@@ -43,7 +43,7 @@ var seattle = {
     body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
       ul.appendChild(li);
@@ -67,14 +67,14 @@ var tokyo = {
   hourlySale: [],
   //a function to get an array of hourly customers rounded down
   getHourlyCust: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
     return this.hourlyCust;
   },
   //a function to get an array of hourly sales rounded down
   getHourlySale: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
     }
     return this.hourlySale;
@@ -82,7 +82,7 @@ var tokyo = {
   //a function to get a total sale
   getTotalSale: function () {
     var total = 0;
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       total += this.hourlySale[i];
     }
     return total;
@@ -99,7 +99,7 @@ var tokyo = {
     body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
       ul.appendChild(li);
@@ -123,14 +123,14 @@ var dubai = {
   hourlySale: [],
   //a function to get an array of hourly customers rounded down
   getHourlyCust: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
     return this.hourlyCust;
   },
   //a function to get an array of hourly sales rounded down
   getHourlySale: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
     }
     return this.hourlySale;
@@ -138,7 +138,7 @@ var dubai = {
   //a function to get a total sale
   getTotalSale: function () {
     var total = 0;
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       total += this.hourlySale[i];
     }
     return total;
@@ -155,7 +155,7 @@ var dubai = {
     body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
       ul.appendChild(li);
@@ -179,14 +179,14 @@ var paris = {
   hourlySale: [],
   //a function to get an array of hourly customers rounded down
   getHourlyCust: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
     return this.hourlyCust;
   },
   //a function to get an array of hourly sales rounded down
   getHourlySale: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
     }
     return this.hourlySale;
@@ -194,7 +194,7 @@ var paris = {
   //a function to get a total sale
   getTotalSale: function () {
     var total = 0;
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       total += this.hourlySale[i];
     }
     return total;
@@ -211,7 +211,7 @@ var paris = {
     body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
       ul.appendChild(li);
@@ -237,14 +237,14 @@ var lima = {
   hourlySale: [],
   //a function to get an array of hourly customers rounded down
   getHourlyCust: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
     return this.hourlyCust;
   },
   //a function to get an array of hourly sales rounded down
   getHourlySale: function () {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
     }
     return this.hourlySale;
@@ -252,7 +252,7 @@ var lima = {
   //a function to get a total sale
   getTotalSale: function () {
     var total = 0;
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       total += this.hourlySale[i];
     }
     return total;
@@ -269,7 +269,7 @@ var lima = {
     body.appendChild(storeName);
     var ul = document.createElement('ul');
     body.appendChild(ul);
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < timeArray.length; i++) {
       var li = document.createElement('li');
       li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
       ul.appendChild(li);
