@@ -102,7 +102,7 @@ function renderFooter() {
 
 // a function that combines the above functions to make the entire table
 function generateData() {
-  // table.innerHTML = '';
+  table.innerHTML = '';
   renderHeader();
   for (var i = 0; i < all.length; i++) {
     all[i].renderData();
@@ -117,6 +117,7 @@ new Sale('Dubai', 11, 38, 3.7);
 new Sale('Paris', 20, 38, 2.3);
 new Sale('Lima', 2, 16, 4.6);
 
+// An event listener for the form
 var addStore = document.getElementById('store');
 addStore.addEventListener('submit', addNewStore);
 function addNewStore(event) {
@@ -128,10 +129,14 @@ function addNewStore(event) {
 
   var newStore = new Sale(location, +minCust, +maxCust, +avgSale);
 
+  //Remove the footer
   table.removeChild(table.lastChild);
+  //Render new object
   newStore.renderData();
+  //Add new footer
   renderFooter();
 
+  //Clear the form after input
   event.target.minimum_customer.value = null;
   event.target.maximum_customer.value = null;
   event.target.avg_sale.value = null;

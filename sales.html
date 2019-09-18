@@ -14,22 +14,23 @@
     <h3>Create A New Store:</h3>
 
     <label for="minimum_customer">Minimum Customer:</label>
-    <input id="minimum_customer" name="minimum_customer" type="number" placeholder="Minimum Customer"/> <br>
+    <input id="minimum_customer" name="minimum_customer" type="number" placeholder="Minimum Customer" required/> <br>
 
     <label for="maximum_customer">Maximum Customer:</label>
-    <input id="maximum_customer" name="maximum_customer" type="number" placeholder="Maximum Customer"/> <br>
+    <input id="maximum_customer" name="maximum_customer" type="number" placeholder="Maximum Customer" required/> <br>
 
     <label for="avg_sale">Average Sale per Customer:</label>
-    <input id="avg_sale" name="avg_sale" type="text" placeholder="Average Sale "/> <br>
+    <input id="avg_sale" name="avg_sale" type="number" placeholder="Average Sale" step='0.1' required/> <br>
 
     <label for="location">Location:</label>
-    <input id="location" name="location" type="text" placeholder="Location"/> <br>
+    <input id="location" name="location" type="text" placeholder="Location" required maxlength="30"/> <br>
 
-    <button id="submit" type="submit" name="submit"  value="submit">Submit</button>
+    <button id="submit" type="submit" name="submit" value="submit">Submit</button>
 
   </fieldset>
 
 </form>
+
 <body id="body">
 
   <table id="table">
