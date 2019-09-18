@@ -100,6 +100,7 @@ function renderFooter() {
   table.appendChild(newTR);
 }
 
+// a function that combines the above functions to make the entire table
 function generateData() {
   renderHeader();
   for (var i = 0; i < all.length; i++) {
@@ -108,18 +109,11 @@ function generateData() {
   renderFooter();
 }
 
+// An instantiation of new sale objects
 new Sale('Seattle', 23, 65, 6.3);
 new Sale('Tokyo', 3, 24, 1.2);
 new Sale('Dubai', 11, 38, 3.7);
 new Sale('Paris', 20, 38, 2.3);
 new Sale('Lima', 2, 16, 4.6);
-
-// renderHeader();
-// seattle.renderData();
-// tokyo.renderData();
-// dubai.renderData();
-// paris.renderData();
-// lima.renderData();
-// renderFooter();
 
 generateData();
