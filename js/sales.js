@@ -5,6 +5,7 @@ var table = document.getElementById('table');
 var totalHourlySale = [];
 var all = [];
 
+//Constructor Function Sale that define properties and behaviors inside of a template for our objects
 function Sale(location, minCust, maxCust, avgSale) {
   this.location = location;
   this.minCust = minCust;
@@ -16,6 +17,7 @@ function Sale(location, minCust, maxCust, avgSale) {
   all.push(this);
 }
 
+//Protoypes for the objects
 Sale.prototype.getHourlyCust = function () {
   for (var i = 0; i < timeArray.length; i++) {
     this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
@@ -37,6 +39,7 @@ Sale.prototype.getTotalSale = function () {
   return this.total;
 };
 
+//A function that creates the header of the table
 function renderHeader() {
   var newTR = document.createElement('tr');
   var firstHeader = document.createElement('th');
@@ -53,6 +56,7 @@ function renderHeader() {
   table.appendChild(newTR);
 };
 
+//A function that creates the middle rows of the table
 Sale.prototype.renderData = function () {
   this.getHourlyCust();
   this.getHourlySale();
@@ -72,7 +76,7 @@ Sale.prototype.renderData = function () {
   table.appendChild(newTR);
 };
 
-
+//A function that creates the last row of the table
 function renderFooter() {
   var newTR = document.createElement('tr');
   var firstColumn = document.createElement('td');
@@ -100,6 +104,14 @@ function renderFooter() {
   table.appendChild(newTR);
 }
 
+// function generateData() {
+//   renderHeader();
+//   for (var i = 0; i < all.length; i++) {
+//     Sale.all[i].renderData();
+//   }
+//   renderFooter();
+// }
+
 var seattle = new Sale('Seattle', 23, 65, 6.3);
 var tokyo = new Sale('Tokyo', 3, 24, 1.2);
 var dubai = new Sale('Dubai', 11, 38, 3.7);
@@ -113,5 +125,3 @@ dubai.renderData();
 paris.renderData();
 lima.renderData();
 renderFooter();
-
-
