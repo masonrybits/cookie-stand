@@ -75,20 +75,20 @@ Sale.prototype.renderData = function () {
 
 //A function that creates the last row of the table
 function renderFooter() {
-  var newTR = document.createElement('tr');
+  var newFooterTR = document.createElement('tr');
   var firstColumn = document.createElement('td');
   firstColumn.textContent = 'Totals';
-  newTR.appendChild(firstColumn);
+  newFooterTR.appendChild(firstColumn);
   //nested for loop
   for (var i = 0; i < timeArray.length; i++) {
     var newTD = document.createElement('td');
-    var totalsalesperhour = 0;
+    var totalSalesPerHour = 0;
     for (var j = 0; j < all.length; j++) {
-      totalsalesperhour += all[j].hourlySale[i];
+      totalSalesPerHour += all[j].hourlySale[i];
     }
-    totalHourlySale.push(totalsalesperhour);
+    totalHourlySale.push(totalSalesPerHour);
     newTD.textContent = totalHourlySale[i];
-    newTR.appendChild(newTD);
+    newFooterTR.appendChild(newTD);
   }
   var locationTotal = document.createElement('td');
   var totalSale = 0;
@@ -96,12 +96,13 @@ function renderFooter() {
     totalSale += totalHourlySale[k];
   }
   locationTotal.textContent = totalSale;
-  newTR.appendChild(locationTotal);
-  table.appendChild(newTR);
+  newFooterTR.appendChild(locationTotal);
+  table.appendChild(newFooterTR);
 }
 
 // a function that combines the above functions to make the entire table
 function generateData() {
+  table.innerHTML = '';
   renderHeader();
   for (var i = 0; i < all.length; i++) {
     all[i].renderData();
@@ -115,5 +116,31 @@ new Sale('Tokyo', 3, 24, 1.2);
 new Sale('Dubai', 11, 38, 3.7);
 new Sale('Paris', 20, 38, 2.3);
 new Sale('Lima', 2, 16, 4.6);
+
+// An event listener for the form
+var addStore = document.getElementById('store');
+addStore.addEventListener('submit', addNewStore);
+function addNewStore(event) {
+  event.preventDefault();
+  var minCust = event.target.minimum_customer.value;
+  var maxCust = event.target.maximum_customer.value;
+  var avgSale = event.target.avg_sale.value;
+  var location = event.target.location.value;
+
+  var newStore = new Sale(location, +minCust, +maxCust, +avgSale);
+
+  //Remove the footer
+  table.removeChild(table.lastChild);
+  //Render new object
+  newStore.renderData();
+  //Add new footer
+  renderFooter();
+
+  //Clear the form after input
+  event.target.minimum_customer.value = null;
+  event.target.maximum_customer.value = null;
+  event.target.avg_sale.value = null;
+  event.target.location.value = null;
+}
 
 generateData();

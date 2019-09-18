@@ -3,13 +3,33 @@
 <html>
 
 <head>
+
+  <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8" />
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sales</title>
-  <style>
-    table, th, td {
-    border: 1px solid black;
-    }
-  </style>
+
 </head>
+<form id="store">
+  <fieldset>
+    <h3>Create A New Store:</h3>
+
+    <label for="minimum_customer">Minimum Customer:</label>
+    <input id="minimum_customer" name="minimum_customer" type="number" placeholder="Minimum Customer" required/> <br>
+
+    <label for="maximum_customer">Maximum Customer:</label>
+    <input id="maximum_customer" name="maximum_customer" type="number" placeholder="Maximum Customer" required/> <br>
+
+    <label for="avg_sale">Average Sale per Customer:</label>
+    <input id="avg_sale" name="avg_sale" type="number" placeholder="Average Sale" step='0.1' required/> <br>
+
+    <label for="location">Location:</label>
+    <input id="location" name="location" type="text" placeholder="Location" required maxlength="30"/> <br>
+
+    <button id="submit" type="submit" name="submit" value="submit">Submit</button>
+
+  </fieldset>
+
+</form>
 
 <body id="body">
 
@@ -17,9 +37,9 @@
 
   </table>
 
-<footer></footer>
+  <footer></footer>
 
-<script src="js/sales.js"></script>
+  <script src="js/sales.js"></script>
 
 </body>
 
