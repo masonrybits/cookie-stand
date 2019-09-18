@@ -22,21 +22,20 @@ Sale.prototype.getHourlyCust = function () {
   for (var i = 0; i < timeArray.length; i++) {
     this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
   }
-  return this.hourlyCust;
 };
 
 Sale.prototype.getHourlySale = function () {
+  this.getHourlyCust();
   for (var i = 0; i < timeArray.length; i++) {
     this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
   }
-  return this.hourlySale;
 };
 
 Sale.prototype.getTotalSale = function () {
+  this.getHourlySale();
   for (var i = 0; i < timeArray.length; i++) {
     this.total += this.hourlySale[i];
   }
-  return this.total;
 };
 
 //A function that creates the header of the table
@@ -54,12 +53,10 @@ function renderHeader() {
   lastHeader.textContent = 'Daily Location Total';
   newTR.appendChild(lastHeader);
   table.appendChild(newTR);
-};
+}
 
 //A function that creates the middle rows of the table
 Sale.prototype.renderData = function () {
-  this.getHourlyCust();
-  this.getHourlySale();
   this.getTotalSale();
   var newTR = document.createElement('tr');
   var firstColumn = document.createElement('td');
@@ -82,6 +79,7 @@ function renderFooter() {
   var firstColumn = document.createElement('td');
   firstColumn.textContent = 'Totals';
   newTR.appendChild(firstColumn);
+  //nested for loop
   for (var i = 0; i < timeArray.length; i++) {
     var newTD = document.createElement('td');
     var totalsalesperhour = 0;
@@ -96,32 +94,26 @@ function renderFooter() {
   var totalSale = 0;
   for (var k = 0; k < timeArray.length; k++) {
     totalSale += totalHourlySale[k];
-    console.log(totalSale);
   }
   locationTotal.textContent = totalSale;
-
   newTR.appendChild(locationTotal);
   table.appendChild(newTR);
 }
 
-// function generateData() {
-//   renderHeader();
-//   for (var i = 0; i < all.length; i++) {
-//     Sale.all[i].renderData();
-//   }
-//   renderFooter();
-// }
+// a function that combines the above functions to make the entire table
+function generateData() {
+  renderHeader();
+  for (var i = 0; i < all.length; i++) {
+    all[i].renderData();
+  }
+  renderFooter();
+}
 
-var seattle = new Sale('Seattle', 23, 65, 6.3);
-var tokyo = new Sale('Tokyo', 3, 24, 1.2);
-var dubai = new Sale('Dubai', 11, 38, 3.7);
-var paris = new Sale('Paris', 20, 38, 2.3);
-var lima = new Sale('Lima', 2, 16, 4.6);
+// An instantiation of new sale objects
+new Sale('Seattle', 23, 65, 6.3);
+new Sale('Tokyo', 3, 24, 1.2);
+new Sale('Dubai', 11, 38, 3.7);
+new Sale('Paris', 20, 38, 2.3);
+new Sale('Lima', 2, 16, 4.6);
 
-renderHeader();
-seattle.renderData();
-tokyo.renderData();
-dubai.renderData();
-paris.renderData();
-lima.renderData();
-renderFooter();
+generateData();
