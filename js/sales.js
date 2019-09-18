@@ -1,284 +1,117 @@
 'use strict';
 
-var timeArray = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12am: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
+var timeArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var table = document.getElementById('table');
+var totalHourlySale = [];
+var all = [];
 
-var seattle = {
-  location: 'Seattle',
-  minCust: 23,
-  maxCust: 65,
-  avgSale: 6.3,
-  hourlyCust: [],
-  hourlySale: [],
-  //a function to get an array of hourly customers rounded down
-  getHourlyCust: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
-    }
-    return this.hourlyCust;
-  },
-  //a function to get an array of hourly sales rounded down
-  getHourlySale: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
-    }
-    return this.hourlySale;
-  },
-  //a function to get a total sale
-  getTotalSale: function () {
-    var total = 0;
-    for (var i = 0; i < timeArray.length; i++) {
-      total += this.hourlySale[i];
-    }
-    return total;
-  },
-  //a function to make a list of contents
-  render: function () {
-    this.getHourlyCust();
-    this.getHourlySale();
-    this.getTotalSale();
-    var body = document.getElementById('body');
-    var storeName = document.createElement('h1');
-    storeName.textContent = this.location;
-    console.log(this.location);
-    body.appendChild(storeName);
-    var ul = document.createElement('ul');
-    body.appendChild(ul);
-    for (var i = 0; i < timeArray.length; i++) {
-      var li = document.createElement('li');
-      li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
-      ul.appendChild(li);
-    }
-    var total = document.createElement('li');
-    total.textContent = 'Total: ' + this.getTotalSale() + ' cookies';
-    ul.appendChild(total);
+function Sale(location, minCust, maxCust, avgSale) {
+  this.location = location;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgSale = avgSale;
+  this.hourlyCust = [];
+  this.hourlySale = [];
+  this.total = 0;
+  all.push(this);
+}
+
+Sale.prototype.getHourlyCust = function () {
+  for (var i = 0; i < timeArray.length; i++) {
+    this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
   }
-
+  return this.hourlyCust;
 };
 
-seattle.render();
-
-
-var tokyo = {
-  location: 'Tokyo',
-  minCust: 3,
-  maxCust: 24,
-  avgSale: 1.2,
-  hourlyCust: [],
-  hourlySale: [],
-  //a function to get an array of hourly customers rounded down
-  getHourlyCust: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
-    }
-    return this.hourlyCust;
-  },
-  //a function to get an array of hourly sales rounded down
-  getHourlySale: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
-    }
-    return this.hourlySale;
-  },
-  //a function to get a total sale
-  getTotalSale: function () {
-    var total = 0;
-    for (var i = 0; i < timeArray.length; i++) {
-      total += this.hourlySale[i];
-    }
-    return total;
-  },
-  //a function to make a list of contents
-  render: function () {
-    this.getHourlyCust();
-    this.getHourlySale();
-    this.getTotalSale();
-    var body = document.getElementById('body');
-    var storeName = document.createElement('h1');
-    storeName.textContent = this.location;
-    console.log(this.location);
-    body.appendChild(storeName);
-    var ul = document.createElement('ul');
-    body.appendChild(ul);
-    for (var i = 0; i < timeArray.length; i++) {
-      var li = document.createElement('li');
-      li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
-      ul.appendChild(li);
-    }
-    var total = document.createElement('li');
-    total.textContent = 'Total: ' + this.getTotalSale() + ' cookies';
-    ul.appendChild(total);
+Sale.prototype.getHourlySale = function () {
+  for (var i = 0; i < timeArray.length; i++) {
+    this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
   }
-
+  return this.hourlySale;
 };
 
-tokyo.render();
-
-
-var dubai = {
-  location: 'Dubai',
-  minCust: 11,
-  maxCust: 38,
-  avgSale: 3.7,
-  hourlyCust: [],
-  hourlySale: [],
-  //a function to get an array of hourly customers rounded down
-  getHourlyCust: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
-    }
-    return this.hourlyCust;
-  },
-  //a function to get an array of hourly sales rounded down
-  getHourlySale: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
-    }
-    return this.hourlySale;
-  },
-  //a function to get a total sale
-  getTotalSale: function () {
-    var total = 0;
-    for (var i = 0; i < timeArray.length; i++) {
-      total += this.hourlySale[i];
-    }
-    return total;
-  },
-  //a function to make a list of contents
-  render: function () {
-    this.getHourlyCust();
-    this.getHourlySale();
-    this.getTotalSale();
-    var body = document.getElementById('body');
-    var storeName = document.createElement('h1');
-    storeName.textContent = this.location;
-    console.log(this.location);
-    body.appendChild(storeName);
-    var ul = document.createElement('ul');
-    body.appendChild(ul);
-    for (var i = 0; i < timeArray.length; i++) {
-      var li = document.createElement('li');
-      li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
-      ul.appendChild(li);
-    }
-    var total = document.createElement('li');
-    total.textContent = 'Total: ' + this.getTotalSale() + ' cookies';
-    ul.appendChild(total);
+Sale.prototype.getTotalSale = function () {
+  for (var i = 0; i < timeArray.length; i++) {
+    this.total += this.hourlySale[i];
   }
-
+  return this.total;
 };
 
-dubai.render();
-
-
-var paris = {
-  location: 'Paris',
-  minCust: 20,
-  maxCust: 38,
-  avgSale: 2.3,
-  hourlyCust: [],
-  hourlySale: [],
-  //a function to get an array of hourly customers rounded down
-  getHourlyCust: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
-    }
-    return this.hourlyCust;
-  },
-  //a function to get an array of hourly sales rounded down
-  getHourlySale: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
-    }
-    return this.hourlySale;
-  },
-  //a function to get a total sale
-  getTotalSale: function () {
-    var total = 0;
-    for (var i = 0; i < timeArray.length; i++) {
-      total += this.hourlySale[i];
-    }
-    return total;
-  },
-  //a function to make a list of contents
-  render: function () {
-    this.getHourlyCust();
-    this.getHourlySale();
-    this.getTotalSale();
-    var body = document.getElementById('body');
-    var storeName = document.createElement('h1');
-    storeName.textContent = this.location;
-    console.log(this.location);
-    body.appendChild(storeName);
-    var ul = document.createElement('ul');
-    body.appendChild(ul);
-    for (var i = 0; i < timeArray.length; i++) {
-      var li = document.createElement('li');
-      li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
-      ul.appendChild(li);
-    }
-    var total = document.createElement('li');
-    total.textContent = 'Total: ' + this.getTotalSale() + ' cookies';
-    ul.appendChild(total);
+function renderHeader() {
+  var newTR = document.createElement('tr');
+  var firstHeader = document.createElement('th');
+  firstHeader.textContent = 'Location';
+  newTR.appendChild(firstHeader);
+  for (var i = 0; i < timeArray.length; i++) {
+    var newTH = document.createElement('th');
+    newTH.textContent = timeArray[i];
+    newTR.appendChild(newTH);
   }
+  var lastHeader = document.createElement('th');
+  lastHeader.textContent = 'Daily Location Total';
+  newTR.appendChild(lastHeader);
+  table.appendChild(newTR);
+};
 
+Sale.prototype.renderData = function () {
+  this.getHourlyCust();
+  this.getHourlySale();
+  this.getTotalSale();
+  var newTR = document.createElement('tr');
+  var firstColumn = document.createElement('td');
+  firstColumn.textContent = this.location;
+  newTR.appendChild(firstColumn);
+  for (var i = 0; i < timeArray.length; i++) {
+    var newTD = document.createElement('td');
+    newTD.textContent = this.hourlySale[i];
+    newTR.appendChild(newTD);
+  }
+  var locationTotal = document.createElement('td');
+  locationTotal.textContent = this.total;
+  newTR.appendChild(locationTotal);
+  table.appendChild(newTR);
 };
 
 
-paris.render();
-
-
-
-var lima = {
-  location: 'Lima',
-  minCust: 2,
-  maxCust: 16,
-  avgSale: 4.6,
-  hourlyCust: [],
-  hourlySale: [],
-  //a function to get an array of hourly customers rounded down
-  getHourlyCust: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlyCust.push(Math.floor(Math.random(this.minCust, this.maxCust) * (this.maxCust - this.minCust + 1)) + this.minCust);
+function renderFooter() {
+  var newTR = document.createElement('tr');
+  var firstColumn = document.createElement('td');
+  firstColumn.textContent = 'Totals';
+  newTR.appendChild(firstColumn);
+  for (var i = 0; i < timeArray.length; i++) {
+    var newTD = document.createElement('td');
+    var totalsalesperhour = 0;
+    for (var j = 0; j < all.length; j++) {
+      totalsalesperhour += all[j].hourlySale[i];
     }
-    return this.hourlyCust;
-  },
-  //a function to get an array of hourly sales rounded down
-  getHourlySale: function () {
-    for (var i = 0; i < timeArray.length; i++) {
-      this.hourlySale.push(Math.floor(this.hourlyCust[i] * this.avgSale));
-    }
-    return this.hourlySale;
-  },
-  //a function to get a total sale
-  getTotalSale: function () {
-    var total = 0;
-    for (var i = 0; i < timeArray.length; i++) {
-      total += this.hourlySale[i];
-    }
-    return total;
-  },
-  //a function to make a list of contents
-  render: function () {
-    this.getHourlyCust();
-    this.getHourlySale();
-    this.getTotalSale();
-    var body = document.getElementById('body');
-    var storeName = document.createElement('h1');
-    storeName.textContent = this.location;
-    console.log(this.location);
-    body.appendChild(storeName);
-    var ul = document.createElement('ul');
-    body.appendChild(ul);
-    for (var i = 0; i < timeArray.length; i++) {
-      var li = document.createElement('li');
-      li.textContent = timeArray[i] + this.hourlySale[i] + ' cookies';
-      ul.appendChild(li);
-    }
-    var total = document.createElement('li');
-    total.textContent = 'Total: ' + this.getTotalSale() + ' cookies';
-    ul.appendChild(total);
+    totalHourlySale.push(totalsalesperhour);
+    newTD.textContent = totalHourlySale[i];
+    newTR.appendChild(newTD);
   }
+  var locationTotal = document.createElement('td');
+  var totalSale = 0;
+  for (var k = 0; k < timeArray.length; k++) {
+    totalSale += totalHourlySale[k];
+    console.log(totalSale);
+  }
+  locationTotal.textContent = totalSale;
 
-};
+  newTR.appendChild(locationTotal);
+  table.appendChild(newTR);
+}
 
-lima.render();
+var seattle = new Sale('Seattle', 23, 65, 6.3);
+var tokyo = new Sale('Tokyo', 3, 24, 1.2);
+var dubai = new Sale('Dubai', 11, 38, 3.7);
+var paris = new Sale('Paris', 20, 38, 2.3);
+var lima = new Sale('Lima', 2, 16, 4.6);
+
+renderHeader();
+seattle.renderData();
+tokyo.renderData();
+dubai.renderData();
+paris.renderData();
+lima.renderData();
+renderFooter();
+
+
