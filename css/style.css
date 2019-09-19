@@ -1,0 +1,11 @@
+table, th, td {
+  border: 1px solid black;
+}
+
+#nav-header {
+  background-color: pink;
+}
+
+article {
+  background-color: pink;
+}
