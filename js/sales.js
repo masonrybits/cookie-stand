@@ -102,7 +102,6 @@ function renderFooter() {
 
 // a function that combines the above functions to make the entire table
 function generateData() {
-  table.innerHTML = '';
   renderHeader();
   for (var i = 0; i < all.length; i++) {
     all[i].renderData();
@@ -131,6 +130,9 @@ function addNewStore(event) {
 
   //Remove the footer
   table.removeChild(table.lastChild);
+
+  //Reset the totalHourlySale array
+  totalHourlySale = [];
   //Render new object
   newStore.renderData();
   //Add new footer
