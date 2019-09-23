@@ -1,14 +1,24 @@
 table, th, td {
   border: 1px solid black;
+  color: green;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: aqua
+
 }
 
 h1 {
   font-size: 50px;
+  color: darkgreen;
+  font-family: 'Mansalva', cursive;
+
 }
 
 h2 {
   font-size: 30px;
   text-align: center;
+  color: greenyellow;
+  font-family: "Times New Roman", Times, serif;
+
 
 }
 
